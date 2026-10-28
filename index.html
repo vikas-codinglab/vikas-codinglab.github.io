@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vikas Rai — Senior Data Engineer</title>
+<meta name="description" content="Vikas Rai — Senior Data Engineer specialising in Microsoft Fabric, Databricks and Azure. 6+ years building enterprise data platforms.">
+<meta property="og:title" content="Vikas Rai — Senior Data Engineer">
+<meta property="og:description" content="Microsoft Fabric · Databricks · Azure — 6+ years, 25+ projects, 2× Microsoft certified.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070d1a; --bg2:#0b1426; --card:#0f1b31; --card2:#13223d; --line:#1d2f4f;
+  --text:#e6edf5; --muted:#8fa1b8; --accent:#22c3d0; --accent2:#7c8cff;
+  --fabric:#14b8a6; --dbx:#ff5b35; --ok:#2ed47a; --warn:#f5b941;
+  --bronze:#cd7f32; --silver:#b8c2cf; --gold:#f2c14e;
+  --plat:var(--fabric); --glow:rgba(34,195,208,.22);
+  --radius:16px; --max:1160px;
+}
+:root[data-theme="light"]{
+  --bg:#f5f7fb; --bg2:#edf1f7; --card:#ffffff; --card2:#f4f7fb; --line:#dbe3ee;
+  --text:#13213a; --muted:#5a6a80; --accent:#0e8f9a; --accent2:#4a5be0; --glow:rgba(14,143,154,.16);
+  --silver:#8a96a6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .4s,color .4s}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.mono{font-family:'JetBrains Mono',monospace}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--fabric),var(--accent2),var(--dbx));z-index:100}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.scrolled{background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.05rem}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:20px;align-items:center}
+.links a{font-size:.88rem;color:var(--muted);position:relative;transition:color .2s}
+.links a:hover,.links a.active{color:var(--text)}
+.links a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--accent);transition:width .25s}
+.links a:hover::after,.links a.active::after{width:100%}
+.icon-btn{background:none;border:1px solid var(--line);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;display:grid;place-items:center;font-size:1rem}
+#menuBtn{display:none}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:90px 0 60px}
+#stream{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.35;animation:float 14s ease-in-out infinite}
+.b1{width:420px;height:420px;background:var(--fabric);top:-100px;right:-80px}
+.b2{width:380px;height:380px;background:var(--dbx);bottom:-140px;left:-100px;opacity:.22;animation-delay:-6s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,30px) scale(1.12)}}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center;width:100%}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;font-size:.82rem;color:var(--muted);background:color-mix(in srgb,var(--card) 70%,transparent)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(46,212,122,.7)}70%{box-shadow:0 0 0 10px rgba(46,212,122,0)}100%{box-shadow:0 0 0 0 rgba(46,212,122,0)}}
+h1{font-size:clamp(2.5rem,5.6vw,4.2rem);line-height:1.05;font-weight:800;margin:18px 0 10px;letter-spacing:-1.5px}
+.grad{background:linear-gradient(90deg,var(--fabric),var(--accent2),var(--dbx),var(--fabric));background-size:300% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 8s linear infinite}
+@keyframes shine{to{background-position:300% center}}
+.typed{font-family:'JetBrains Mono',monospace;font-size:clamp(.95rem,2vw,1.15rem);color:var(--muted);min-height:1.8em}
+.typed .p{color:var(--accent)}
+.typed b{color:var(--text);font-weight:500}
+.cursor{display:inline-block;width:9px;height:1.1em;background:var(--accent);vertical-align:middle;margin-left:2px;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{color:var(--muted);max-width:540px;margin:16px 0 26px}
+.lead strong{color:var(--text)}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:12px 20px;border-radius:12px;font-weight:600;font-size:.93rem;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s;border:none;cursor:pointer;font-family:inherit;color:inherit}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:linear-gradient(135deg,var(--fabric),var(--accent2));color:#fff;box-shadow:0 8px 24px var(--glow)}
+.btn.ghost{border:1px solid var(--line);background:color-mix(in srgb,var(--card) 70%,transparent)}
+.platforms{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.pl{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:5px 10px;border-radius:8px;border:1px solid var(--line);color:var(--muted);display:flex;align-items:center;gap:6px}
+.pl i{width:8px;height:8px;border-radius:2px;display:inline-block}
+
+/* pipeline run card */
+.run{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 24px 70px rgba(0,0,0,.35);overflow:hidden;animation:rise 1s .2s both;position:relative}
+.run::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--plat);transition:background .6s}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.run-head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);gap:10px}
+.run-title{font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:700}
+.run-sub{font-size:.72rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.plat-tag{font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:999px;color:#fff;background:var(--plat);transition:background .6s;white-space:nowrap}
+.acts{padding:8px 18px}
+.act{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line)}
+.act:last-child{border-bottom:none}
+.st{width:18px;height:18px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:.65rem;color:#fff;transition:all .3s}
+.st.r{border-color:var(--plat);border-top-color:transparent;animation:spin .7s linear infinite}
+.st.s{background:var(--ok);border-color:var(--ok)}
+.st.s::after{content:"✓";font-weight:800}
+@keyframes spin{to{transform:rotate(360deg)}}
+.act-name{font-size:.86rem;font-weight:600}
+.act-type{font-size:.72rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.bar{height:3px;background:var(--line);border-radius:3px;margin-top:5px;overflow:hidden}
+.bar b{display:block;height:100%;width:0;background:var(--plat);transition:width linear}
+.dur{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted);min-width:44px;text-align:right}
+.log{background:var(--bg);border-top:1px solid var(--line);padding:12px 18px;height:96px;overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);line-height:1.65;display:flex;flex-direction:column;justify-content:flex-end}
+.log div{animation:logIn .3s ease}
+.log .ok{color:var(--ok)}.log .k{color:var(--accent2)}.log .pf{color:var(--plat)}
+@keyframes logIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.run-foot{display:flex;justify-content:space-between;padding:10px 18px;border-top:1px solid var(--line);font-size:.75rem;font-family:'JetBrains Mono',monospace;color:var(--muted)}
+.run-foot b{color:var(--text)}
+#runStatus.ok{color:var(--ok)}
+
+/* sections */
+section{padding:96px 0;position:relative}
+section:nth-of-type(even){background:var(--bg2)}
+.cell{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:.85rem}
+.cell span{color:var(--muted)}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin:6px 0 14px;letter-spacing:-.5px}
+.sub{color:var(--muted);max-width:640px;margin-bottom:40px}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* about */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+.about p{color:var(--muted);margin-bottom:14px}
+.about strong{color:var(--text)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;text-align:center;transition:transform .3s,border-color .3s}
+.stat:hover{transform:translateY(-4px);border-color:var(--accent)}
+.stat .n{font-size:2.3rem;font-weight:800;background:linear-gradient(135deg,var(--fabric),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .l{color:var(--muted);font-size:.86rem}
+
+/* architecture */
+.arch{--plat:var(--fabric)}
+.arch-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:26px}
+.toggle{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px;position:relative}
+.toggle button{position:relative;z-index:1;background:none;border:none;color:var(--muted);font:600 .86rem Inter,sans-serif;padding:8px 16px;cursor:pointer;border-radius:9px;transition:color .3s}
+.toggle button.on{color:#fff}
+.toggle .pill{position:absolute;top:4px;bottom:4px;left:4px;border-radius:9px;background:var(--plat);transition:all .4s cubic-bezier(.6,.2,.2,1)}
+.auto{font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.flow{display:flex;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 22px;position:relative;overflow:hidden}
+.flow::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--line) 1px,transparent 1px);background-size:18px 18px;opacity:.6}
+.node{position:relative;z-index:1;flex:0 0 138px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 10px;text-align:center;transition:border-color .5s,box-shadow .5s}
+.node::before{content:"";position:absolute;top:-1px;left:14px;right:14px;height:3px;border-radius:0 0 3px 3px;background:var(--tier,var(--plat));transition:background .6s}
+.node .ic{font-size:1.3rem;line-height:1;margin-bottom:6px}
+.node h4{font-size:.88rem;margin-bottom:2px}
+.node .tech{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);min-height:2.4em;transition:opacity .3s}
+.node.hit{border-color:var(--tier,var(--plat));box-shadow:0 0 0 4px color-mix(in srgb,var(--tier,var(--plat)) 20%,transparent)}
+.node .cnt{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--tier,var(--plat));margin-top:6px;font-weight:700}
+.srcs{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.srcs span{font-size:.68rem;font-family:'JetBrains Mono',monospace;padding:3px 6px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.pipe{position:relative;z-index:1;flex:1;min-width:20px;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 11px)}
+.pipe i{position:absolute;top:-4px;left:0;width:10px;height:10px;border-radius:3px;background:var(--plat);box-shadow:0 0 12px var(--plat);animation:flowx 2.4s linear infinite;transition:background .6s}
+.pipe i:nth-child(2){animation-delay:-.8s}.pipe i:nth-child(3){animation-delay:-1.6s}
+@keyframes flowx{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:calc(100% - 10px);opacity:0}}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.metric small{color:var(--muted);font-size:.75rem;display:flex;align-items:center;gap:6px}
+.metric b{font-family:'JetBrains Mono',monospace;font-size:1.3rem;display:block;margin-top:2px}
+.spark{display:flex;align-items:flex-end;gap:2px;height:22px;margin-top:6px}
+.spark i{flex:1;background:var(--plat);opacity:.55;border-radius:2px 2px 0 0;transition:height .6s,background .6s}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.skill-card{--c:var(--accent);background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+.skill-card::before{content:"";position:absolute;inset:0;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--c) 22%,transparent),transparent 45%);opacity:0;transition:opacity .3s}
+.skill-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c)}
+.skill-card:hover{border-color:var(--c);transform:translateY(-4px)}
+.skill-card:hover::before{opacity:1}
+.skill-card h3{font-size:1.02rem;margin-bottom:12px;display:flex;align-items:center;gap:10px;position:relative}
+.skill-card .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--c);font-weight:800;font-size:.85rem;font-family:'JetBrains Mono',monospace}
+.chips{display:flex;flex-wrap:wrap;gap:7px;position:relative}
+.chip{font-size:.78rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--bg);transition:all .2s}
+.chip:hover{color:var(--c);border-color:var(--c)}
+
+/* experience as git log */
+.timeline{position:relative;padding-left:36px}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.timeline .fill{position:absolute;left:9px;top:6px;width:2px;height:0;background:linear-gradient(var(--fabric),var(--accent2),var(--dbx))}
+.job{position:relative;margin-bottom:26px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;transition:border-color .3s}
+.job:hover{border-color:var(--accent)}
+.job::before{content:"";position:absolute;left:-34px;top:26px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--accent);box-shadow:0 0 0 5px var(--glow)}
+.commit{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--muted);margin-bottom:8px;display:flex;gap:10px;flex-wrap:wrap}
+.commit .h{color:var(--warn)}
+.commit .br{color:var(--accent);border:1px solid var(--line);padding:0 6px;border-radius:5px}
+.job-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.job h3{font-size:1.18rem}
+.job .co{color:var(--accent);font-weight:600}
+.job .date{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);padding:4px 10px;border:1px solid var(--line);border-radius:8px;height:fit-content}
+.group{font-size:.74rem;letter-spacing:1.5px;text-transform:uppercase;margin:16px 0 8px;font-weight:700;display:flex;align-items:center;gap:8px;color:var(--muted)}
+.group i{width:8px;height:8px;border-radius:2px}
+.job ul{list-style:none}
+.job li{position:relative;padding-left:20px;margin-bottom:8px;color:var(--muted);font-size:.93rem}
+.job li::before{content:"+";position:absolute;left:0;color:var(--ok);font-family:'JetBrains Mono',monospace;font-weight:700}
+.job li b{color:var(--text);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tags span{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:3px 9px;border-radius:6px;background:color-mix(in srgb,var(--accent2) 14%,transparent);color:var(--accent2)}
+.more{background:none;border:none;color:var(--accent);font-weight:600;cursor:pointer;margin-top:6px;font-size:.86rem;font-family:inherit}
+.collapsible{overflow:hidden;transition:max-height .5s ease}
+
+/* ci/cd */
+.cicd{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.cicd-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:10px}
+.cicd-head .mono{font-size:.8rem;color:var(--muted)}
+.cicd-head .mono b{color:var(--text)}
+.dstatus{font-family:'JetBrains Mono',monospace;font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:999px;border:1px solid var(--line)}
+.dstatus.run{color:var(--warn);border-color:var(--warn)}
+.dstatus.ok{color:var(--ok);border-color:var(--ok)}
+.stages{display:flex;align-items:center;padding:34px 26px 26px}
+.stage{display:flex;flex-direction:column;align-items:center;gap:8px;flex:0 0 92px;text-align:center}
+.stage > div:last-child{display:flex;flex-direction:column;align-items:center}
+.circ{width:46px;height:46px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:1.05rem;font-weight:800;background:var(--bg);position:relative;transition:all .35s}
+.stage.r .circ{border-color:var(--warn);box-shadow:0 0 0 6px color-mix(in srgb,var(--warn) 18%,transparent)}
+.stage.r .circ::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid transparent;border-top-color:var(--warn);animation:spin 1s linear infinite}
+.stage.w .circ{border-color:var(--accent2);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent2) 18%,transparent)}
+.stage.s .circ{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--bg))}
+.stage span{font-size:.8rem;font-weight:600}
+.stage small{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--muted);min-height:1.3em}
+.stage.s small{color:var(--ok)}.stage.r small{color:var(--warn)}.stage.w small{color:var(--accent2)}
+.sbar{flex:1;height:3px;background:var(--line);border-radius:3px;margin-bottom:46px;overflow:hidden;min-width:14px}
+.sbar b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ok),var(--accent));transition:width .6s ease}
+.cicd-body{display:grid;grid-template-columns:1.3fr 1fr;border-top:1px solid var(--line)}
+.term{background:var(--bg);padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:.75rem;line-height:1.75;color:var(--muted);height:210px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.term div{animation:logIn .3s ease}
+.term .ok{color:var(--ok)}.term .k{color:var(--accent2)}.term .w{color:var(--warn)}.term .c{color:var(--accent)}
+.gitcard{padding:20px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.gitcard small{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.gitcard .msg{font-weight:600;font-size:.95rem;min-height:2.8em}
+.gitcard .meta{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted)}
+.gitcard .meta b{color:var(--warn);font-weight:500}
+.gitgraph{width:100%;height:70px}
+.gitgraph path{fill:none;stroke-width:2.5;stroke-linecap:round}
+.gitgraph circle{stroke-width:2.5}
+.envs{display:flex;gap:8px;flex-wrap:wrap}
+.envs span{font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:4px 9px;border-radius:7px;border:1px solid var(--line);color:var(--muted);transition:all .3s}
+.envs span.on{color:var(--ok);border-color:var(--ok);background:color-mix(in srgb,var(--ok) 10%,transparent)}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s,border-color .35s;position:relative;overflow:hidden}
+.proj:hover{border-color:var(--accent);box-shadow:0 18px 40px var(--glow)}
+.proj .num{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:.82rem}
+.proj h3{font-size:1.05rem;margin:10px 0}
+.proj p{color:var(--muted);font-size:.9rem;flex:1}
+
+/* certs + edu */
+.certs,.edu{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.cert{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;transition:transform .3s,border-color .3s}
+.cert:hover{transform:translateY(-3px);border-color:var(--accent)}
+.seal{width:48px;height:48px;flex:none;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.7rem;color:#fff;background:linear-gradient(135deg,var(--fabric),var(--accent2));font-family:'JetBrains Mono',monospace}
+.cert h4{font-size:.95rem}
+.cert small{color:var(--muted)}
+.verify{color:var(--accent);font-size:.78rem;font-weight:600}
+.edu-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;gap:18px;align-items:flex-start;transition:transform .3s,border-color .3s}
+.edu-card:hover{transform:translateY(-3px);border-color:var(--accent2)}
+.edu-card .seal{background:linear-gradient(135deg,var(--accent2),var(--dbx));font-size:1.3rem}
+.edu-card h3{font-size:1.05rem;margin-bottom:4px}
+.edu-card .where{color:var(--accent);font-weight:600;font-size:.9rem}
+.edu-card p{color:var(--muted);font-size:.86rem;margin-top:6px}
+
+/* contact */
+.contact{text-align:center}
+.contact .sub{margin:0 auto 30px}
+.contact-grid{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,100px);background:var(--card);border:1px solid var(--ok);padding:10px 18px;border-radius:10px;transition:transform .35s;z-index:200;font-size:.9rem}
+.toast.show{transform:translate(-50%,0)}
+footer{padding:28px 0;text-align:center;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace}
+
+/* responsive */
+@media (max-width:1000px){
+  .hero-inner,.about{grid-template-columns:1fr}
+  .run{max-width:560px}
+  .flow{flex-direction:column;align-items:stretch;padding:22px}
+  .node{flex:none;width:100%;max-width:360px;margin:0 auto}
+  .srcs{flex-direction:row;flex-wrap:wrap;justify-content:center}
+  .pipe{flex:none;width:2px;height:38px;min-width:0;margin:0 auto;background:repeating-linear-gradient(180deg,var(--line) 0 6px,transparent 6px 11px)}
+  .pipe i{left:-4px;top:0;animation-name:flowy}
+  .metrics{grid-template-columns:1fr 1fr}
+  .cicd-body{grid-template-columns:1fr}
+  .gitcard{border-left:none;border-top:1px solid var(--line)}
+}
+@keyframes flowy{0%{top:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{top:calc(100% - 10px);opacity:0}}
+@media (max-width:780px){
+  #menuBtn{display:grid}
+  .links{position:fixed;top:64px;right:0;left:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s;padding:8px 0}
+  .links.open{transform:none}
+  .links a{padding:13px 20px;width:100%}
+  .links a::after{display:none}
+  .links .icon-btn{margin:10px 20px}
+  section{padding:72px 0}
+  .skills,.certs,.edu{grid-template-columns:1fr}
+  .stages{flex-direction:column;align-items:stretch;padding:22px}
+  .stage{flex-direction:row;flex:none;text-align:left;gap:14px}
+  .stage > div:last-child{align-items:flex-start}
+  .circ{width:40px;height:40px;flex:none}
+  .sbar{width:3px;height:18px;flex:none;margin:4px 0 4px 19px;min-width:0}
+  .sbar b{width:100%!important;height:0;transition:height .6s}
+  .sbar.done b{height:100%}
+  .timeline{padding-left:28px}
+  .job{padding:18px}
+  .job::before{left:-26px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">vikas<span>.</span>rai()</a>
+    <button class="icon-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <div class="links" id="links">
+      <a href="#about">About</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#cicd">CI/CD</a>
+      <a href="#projects">Projects</a>
+      <a href="#certs">Certifications</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☀</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <canvas id="stream"></canvas>
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="badge"><span class="dot"></span> Open to Data Engineering roles · Poland</span>
+      <h1>Hi, I'm <span class="grad">Vikas Rai</span></h1>
+      <div class="typed"><span class="p">$</span> <b id="typed"></b><span class="cursor"></span></div>
+      <p class="lead">Senior Data Engineer with 6+ years building enterprise data platforms — <strong>Microsoft Fabric</strong> lakehouses, <strong>Databricks</strong> PySpark pipelines and <strong>Azure</strong> DevOps-driven deployments.</p>
+      <div class="btns">
+        <a class="btn primary" href="Vikas_Rai_CV.pdf" download>⬇ Download CV</a>
+        <a class="btn ghost" href="#contact">✉ Get in touch</a>
+        <a class="btn ghost" href="https://github.com/vikas-codinglab" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="platforms">
+        <span class="pl"><i style="background:var(--fabric)"></i>Microsoft Fabric</span>
+        <span class="pl"><i style="background:var(--dbx)"></i>Databricks</span>
+        <span class="pl"><i style="background:#3b82f6"></i>Azure</span>
+        <span class="pl"><i style="background:var(--warn)"></i>Spark · Delta</span>
+      </div>
+    </div>
+
+    <div class="run" id="run">
+      <div class="run-head">
+        <div>
+          <div class="run-title" id="runName">pl_medallion_daily</div>
+          <div class="run-sub" id="runId">run #1042 · trigger: schedule</div>
+        </div>
+        <span class="plat-tag" id="platTag">Fabric Data Pipeline</span>
+      </div>
+      <div class="acts" id="acts"></div>
+      <div class="log" id="runLog"></div>
+      <div class="run-foot"><span>rows: <b id="rows">0</b></span><span id="runStatus">● running</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="cell reveal">In [1]: <span>about_me()</span></div>
+    <h2 class="reveal">Turning raw data into reliable platforms</h2>
+    <div class="about">
+      <div class="reveal">
+        <p>I'm a <strong>Senior Data Engineer</strong> with 6+ years of experience architecting and delivering data platforms across <strong>Azure</strong> and <strong>AWS</strong>.</p>
+        <p>Right now I'm leading the migration of a production <strong>Azure Synapse</strong> platform to <strong>Microsoft Fabric</strong>, governing a multi-capacity Fabric estate, and building <strong>PySpark data-quality frameworks</strong> on Databricks and Delta Lake.</p>
+        <p>I like pipelines that are event-driven, observable, version-controlled and cost-efficient, and I enjoy explaining them clearly to business stakeholders.</p>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><div class="n" data-count="6" data-suffix="+">0</div><div class="l">Years experience</div></div>
+        <div class="stat"><div class="n" data-count="25" data-suffix="+">0</div><div class="l">Projects delivered</div></div>
+        <div class="stat"><div class="n" data-count="16">0</div><div class="l">Fabric capacities governed</div></div>
+        <div class="stat"><div class="n" data-count="2" data-suffix="×">0</div><div class="l">Microsoft DE certified</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section id="architecture" class="arch">
+  <div class="wrap">
+    <div class="cell reveal">In [2]: <span>show_architecture()</span></div>
+    <h2 class="reveal">How I build data platforms</h2>
+    <p class="sub reveal">A medallion lakehouse I've delivered on both Microsoft Fabric and Databricks. Switch platforms to see the tooling at each layer.</p>
+    <div class="arch-top reveal">
+      <div class="toggle" id="platToggle">
+        <span class="pill" id="pill"></span>
+        <button class="on" data-p="fabric">Microsoft Fabric</button>
+        <button data-p="dbx">Databricks</button>
+      </div>
+      <span class="auto" id="autoNote">● auto-switching</span>
+    </div>
+    <div class="flow reveal" id="flow">
+      <div class="node">
+        <div class="ic">🗄️</div><h4>Sources</h4>
+        <div class="srcs"><span>SQL DBs</span><span>SAP</span><span>SharePoint</span><span>ADLS / S3</span><span>APIs</span></div>
+      </div>
+      <div class="pipe"><i></i><i></i><i></i></div>
+      <div class="node">
+        <div class="ic">⚡</div><h4>Ingest</h4>
+        <div class="tech" data-fabric="Data Pipelines · Logic Apps · Eventstreams" data-dbx="Auto Loader · ADF · Event Hubs"></div>
+        <div class="cnt" data-cnt>0</div>
+      </div>
+      <div class="pipe"><i></i><i></i><i></i></div>
+      <div class="node" style="--tier:var(--bronze)">
+        <div class="ic">🥉</div><h4>Bronze</h4>
+        <div class="tech" data-fabric="Lakehouse Files · raw Delta" data-dbx="Delta · Unity Catalog raw"></div>
+        <div class="cnt" data-cnt>0</div>
+      </div>
+      <div class="pipe"><i></i><i></i><i></i></div>
+      <div class="node" style="--tier:var(--silver)">
+        <div class="ic">🥈</div><h4>Silver</h4>
+        <div class="tech" data-fabric="Notebooks · PySpark · DQ checks" data-dbx="PySpark Jobs · DQ framework"></div>
+        <div class="cnt" data-cnt>0</div>
+      </div>
+      <div class="pipe"><i></i><i></i><i></i></div>
+      <div class="node" style="--tier:var(--gold)">
+        <div class="ic">🥇</div><h4>Gold</h4>
+        <div class="tech" data-fabric="Lakehouse / Warehouse · star schema" data-dbx="Delta MERGE · curated marts"></div>
+        <div class="cnt" data-cnt>0</div>
+      </div>
+      <div class="pipe"><i></i><i></i><i></i></div>
+      <div class="node">
+        <div class="ic">📊</div><h4>Serve</h4>
+        <div class="tech" data-fabric="Direct Lake · Power BI" data-dbx="Databricks SQL · Snowflake"></div>
+        <div class="cnt" data-cnt>0</div>
+      </div>
+    </div>
+    <div class="metrics reveal">
+      <div class="metric"><small>⇢ Throughput</small><b id="mThr">0 rows/s</b><div class="spark" data-spark></div></div>
+      <div class="metric"><small>◷ Data freshness</small><b id="mFresh">0 min</b><div class="spark" data-spark></div></div>
+      <div class="metric"><small>✓ DQ pass rate</small><b id="mDq">0%</b><div class="spark" data-spark></div></div>
+      <div class="metric"><small>◆ Pipelines healthy</small><b id="mHealth">0 / 0</b><div class="spark" data-spark></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="cell reveal">In [3]: <span>skills.display()</span></div>
+    <h2 class="reveal">Tech stack</h2>
+    <p class="sub reveal">Cloud data engineering end to end, from ingestion and Spark processing to governance, CI/CD and BI.</p>
+    <div class="skills" id="skillGrid"></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="cell reveal">In [4]: <span>git log --career</span></div>
+    <h2 class="reveal">Experience</h2>
+    <p class="sub reveal">Every role, committed to main.</p>
+    <div class="timeline" id="timeline"><div class="fill" id="tlFill"></div></div>
+  </div>
+</section>
+
+<!-- CI/CD -->
+<section id="cicd">
+  <div class="wrap">
+    <div class="cell reveal">In [5]: <span>deploy(env="prod")</span></div>
+    <h2 class="reveal">DevOps &amp; deployment</h2>
+    <p class="sub reveal">Git-integrated Fabric workspaces and Azure DevOps CI/CD: every change flows Dev → Test → Prod with validation and approval gates.</p>
+    <div class="cicd reveal">
+      <div class="cicd-head">
+        <span class="mono">azure-pipelines.yml · <b id="cdBranch">feature/fabric-migration</b> → <b>main</b></span>
+        <span class="dstatus run" id="cdStatus">● running</span>
+      </div>
+      <div class="stages" id="stages"></div>
+      <div class="cicd-body">
+        <div class="term" id="cdLog"></div>
+        <div class="gitcard">
+          <small>Latest commit</small>
+          <div class="msg" id="cdMsg"></div>
+          <div class="meta">commit <b id="cdHash">a3f9c21</b> · Vikas Rai</div>
+          <svg class="gitgraph" viewBox="0 0 300 70" preserveAspectRatio="none">
+            <path d="M10 50 H290" stroke="var(--accent)"/>
+            <path id="gBranch" d="M60 50 C 90 50, 90 18, 120 18 H200 C 230 18, 230 50, 260 50" stroke="var(--accent2)" stroke-dasharray="300" stroke-dashoffset="300"/>
+            <circle cx="60" cy="50" r="5" fill="var(--bg)" stroke="var(--accent)"/>
+            <circle cx="140" cy="18" r="5" fill="var(--bg)" stroke="var(--accent2)" id="gc1" opacity="0"/>
+            <circle cx="180" cy="18" r="5" fill="var(--bg)" stroke="var(--accent2)" id="gc2" opacity="0"/>
+            <circle cx="260" cy="50" r="6" fill="var(--ok)" stroke="var(--ok)" id="gMerge" opacity="0"/>
+          </svg>
+          <small>Environments</small>
+          <div class="envs"><span id="eDev">DEV</span><span id="eTest">TEST</span><span id="eProd">PROD</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="cell reveal">In [6]: <span>projects.head()</span></div>
+    <h2 class="reveal">Key projects</h2>
+    <p class="sub reveal">A selection of platform work across Fabric, Databricks, Azure and AWS.</p>
+    <div class="projects" id="projGrid"></div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="wrap">
+    <div class="cell reveal">In [7]: <span>certifications</span></div>
+    <h2 class="reveal">Certifications</h2>
+    <p class="sub reveal">Microsoft and cloud credentials. Click a Microsoft badge to verify it on Microsoft Learn.</p>
+    <div class="certs" id="certGrid"></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <div class="cell reveal">In [8]: <span>education</span></div>
+    <h2 class="reveal">Education</h2>
+    <p class="sub reveal">Academic foundation in computer engineering and computer science.</p>
+    <div class="edu" id="eduGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="cell reveal">In [9]: <span>contact()</span></div>
+    <h2 class="reveal">Let's build something</h2>
+    <p class="sub reveal">Open to Data Engineering roles and Azure / Fabric / Databricks consulting in Poland and remote. The fastest way to reach me is email.</p>
+    <div class="contact-grid reveal">
+      <a class="btn primary" href="mailto:vikasrai.dataengineer@gmail.com">✉ vikasrai.dataengineer@gmail.com</a>
+      <button class="btn ghost" id="copyBtn">⧉ Copy email</button>
+      <a class="btn ghost" href="tel:+48881779438">☎ +48 881 779 438</a>
+      <a class="btn ghost" href="https://github.com/vikas-codinglab" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">© <span id="yr"></span> Vikas Rai · Senior Data Engineer</div></footer>
+<div class="toast" id="toast">✓ Email copied</div>
+
+<script>
+/* ================= DATA (edit here) ================= */
+const SKILLS = [
+  {t:'Microsoft Fabric', ic:'F', c:'var(--fabric)', s:['Lakehouse','Data Pipelines','Notebooks','Warehouse','OneLake','Deployment Pipelines','Git Integration','Semantic Models','Direct Lake','Capacity Mgmt','FUAM']},
+  {t:'Databricks', ic:'DB', c:'var(--dbx)', s:['PySpark','Delta Lake','Unity Catalog','Workflows','Auto Loader','Data Quality','Medallion Architecture']},
+  {t:'Azure', ic:'AZ', c:'#3b82f6', s:['Data Factory','Synapse Analytics','ADLS Gen2','Azure SQL','Logic Apps','Managed Identity','Event Hubs','Infra Setup']},
+  {t:'Languages', ic:'</>', c:'var(--accent2)', s:['Python','SQL','PySpark','KQL','Java']},
+  {t:'Orchestration & Streaming', ic:'⟳', c:'var(--warn)', s:['Apache Airflow','dbt','Apache Kafka','Event-Driven ETL','Batch / Streaming']},
+  {t:'DevOps & IaC', ic:'CI', c:'var(--ok)', s:['Git','Azure DevOps CI/CD','Terraform','Docker','Fabric Git Sync']},
+  {t:'Warehouse & BI', ic:'BI', c:'var(--gold)', s:['Snowflake','Power BI','semantic-link-labs','SSMS']},
+  {t:'AWS', ic:'AW', c:'#ff9900', s:['S3','Glue','Redshift','Athena','Kinesis','QuickSight']},
+];
+const JOBS = [
+  {title:'Data Engineer', co:'Atos', date:'May 2023 – Present', hash:'f4b2e91', br:'HEAD → main', groups:[
+    ['Microsoft Fabric','var(--fabric)',[
+      ['Led the Azure Synapse → Fabric migration',' — assessed 14 resource types and migrated Bronze, Silver and Gold pipeline layers plus serverless SQL to Stage and Production.'],
+      ['Built Dev → Test → Prod deployment pipelines',' with Git-integrated workspaces, plus an automated Teams alert (Fabric notebook + Logic App) for uncommitted Git changes.'],
+      ['Designed event-driven SharePoint → Lakehouse ingestion',' using Logic Apps, managed identity, the OneLake API and the Fabric Jobs API.'],
+      ['Deployed Fabric Unified Admin Monitoring (FUAM)',' across 16 capacities and delivered a capacity right-sizing and cost-saving analysis.'],
+      ['Built a "Capacity Advisor" Fabric app',' with capacity utilisation, AI notebook-code recommendations and report-usage dashboards.'],
+      ['Migrated semantic models and 8 Power BI reports cross-tenant',' with semantic-link-labs; built notebook pipelines for finance consumption lakehouses.'],
+    ]],
+    ['Databricks & Azure','var(--dbx)',[
+      ['Built a reusable PySpark data-quality framework in Databricks',' validating schema, nulls, duplicates and referential integrity on multi-TB Delta Lake data.'],
+      ['Developed medallion transformation logic in Databricks',' orchestrated with ADF, feeding Synapse and Snowflake.'],
+      ['','Designed ETL/ELT pipelines in Azure Data Factory from heterogeneous SQL, SAP and data-lake sources.'],
+      ['','Set up Azure infrastructure and Azure DevOps CI/CD; mentor peers on Databricks, Fabric and Azure.'],
+    ]],
+  ], tags:['Fabric','Databricks','PySpark','ADF','Synapse','Logic Apps','Snowflake','Azure DevOps']},
+  {title:'Big Data Engineer', co:'Microsoft (via LTIMindtree)', date:'Feb 2022 – Apr 2023', hash:'9c1d7a4', br:'release/2023', groups:[[null,null,[
+    ['','Worked directly with client stakeholders as an Azure contractor, designing end-to-end data architecture.'],
+    ['Built Azure Databricks PySpark notebooks',' transforming multi-TB datasets into Delta Lake tables, orchestrated from ADF.'],
+    ['','Built ADF pipelines from ADLS Gen2 to Azure SQL and custom incremental-load logic in Synapse.'],
+    ['','Established Azure DevOps repos, branching and CI/CD; owned ETL delivery and client relationship end-to-end.'],
+  ]]], tags:['Azure Databricks','ADF','Synapse','ADLS Gen2','Azure SQL','Azure DevOps']},
+  {title:'Data Engineer – L2', co:'Hitachi Vantara', date:'Oct 2020 – May 2022', hash:'3e8a0b6', br:'aws-datalake', groups:[[null,null,[
+    ['','Built a scalable Amazon S3 data lake centralising structured and unstructured data.'],
+    ['Developed Databricks on AWS PySpark jobs',' processing raw S3 data into curated Delta Lake layers before loading to Redshift.'],
+    ['','Designed AWS Glue ETL into Redshift and real-time streaming with Kinesis.'],
+    ['','Delivered SQL analysis and dashboards with Athena and QuickSight.'],
+  ]]], tags:['Databricks','AWS Glue','Redshift','Kinesis','S3']},
+  {title:'Data Support Specialist', co:'Sitel', date:'Dec 2018 – Sep 2020', hash:'1a0c5f2', br:'init', groups:[[null,null,[
+    ['','Log analysis and remote configuration of on-premise data storage and warehouse systems.'],
+    ['','Coordinated hardware procurement to minimise downtime; tracked work in Oracle ticketing.'],
+  ]]], tags:['On-prem DWH','Oracle']},
+];
+const PROJECTS = [
+  ['Synapse → Fabric Platform Migration','Assessed and migrated a production Synapse platform (Bronze/Silver/Gold + serverless SQL) to Microsoft Fabric with documented runbooks.',['Fabric','Synapse','Lakehouse']],
+  ['Fabric Capacity Governance & Cost Optimisation','Monitored 16 Fabric capacities with FUAM and delivered right-sizing recommendations with pay-as-you-go savings.',['FUAM','Notebooks','Power BI']],
+  ['Enterprise Data Quality Framework','Reusable PySpark checks in Databricks standardising transformation logic and cutting manual QA effort.',['Databricks','PySpark','Delta Lake']],
+  ['Event-Driven SharePoint Ingestion','Logic App + managed identity pipeline landing files in a Fabric Lakehouse and triggering downstream pipelines.',['Logic Apps','OneLake','Fabric API']],
+  ['Fabric Git Change Monitor','Notebook + Logic App that detects uncommitted Git changes across workspaces and @mentions owners in Teams.',['Fabric Git','Logic Apps','Teams']],
+  ['AWS Data Lake & Real-Time Analytics','S3 data lake with Glue ETL, Databricks processing and Kinesis streaming for near-real-time dashboards.',['S3','Databricks','Kinesis']],
+];
+const CERTS = [
+  ['Fabric Data Engineer Associate','Microsoft Certified · DP-700','https://learn.microsoft.com/api/credentials/share/en-us/VikasRai-5066/9203F7C03273C895?sharingId=8BB8F0A58C62CFD9','DP700'],
+  ['Azure Data Engineer Associate','Microsoft Certified · DP-203','https://learn.microsoft.com/api/credentials/share/en-us/VikasRai-5066/3944BD4BDECC7512?sharingId=8BB8F0A58C62CFD9','DP203'],
+  ['Azure Fundamentals','Microsoft Certified · AZ-900',null,'AZ900'],
+  ['Accreditation (Business)','AWS Partner',null,'AWS'],
+  ['Synapse Analytics – Core Course Specialist','Azure',null,'SYN'],
+];
+const EDU = [
+  ["Bachelor's Degree, Computer Engineering",'Poland',''],
+  ['Diploma in Computer Science','Singapore',''],
+];
+
+/* ================= RENDER ================= */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+$('#skillGrid').innerHTML=SKILLS.map((s,i)=>`
+  <div class="skill-card reveal" style="--c:${s.c};transition-delay:${(i%3)*.08}s">
+    <h3><span class="ic">${s.ic.replace('<','&lt;').replace('>','&gt;')}</span>${s.t}</h3>
+    <div class="chips">${s.s.map(c=>`<span class="chip">${c}</span>`).join('')}</div>
+  </div>`).join('');
+
+$('#timeline').insertAdjacentHTML('beforeend',JOBS.map((j,ji)=>{
+  const body=j.groups.map(([g,col,items])=>(g?`<div class="group"><i style="background:${col}"></i>${g}</div>`:'')+
+    '<ul>'+items.map(([b,r])=>`<li>${b?`<b>${b}</b>`:''}${r}</li>`).join('')+'</ul>').join('');
+  const long=ji===0;
+  return `<article class="job reveal">
+    <div class="commit"><span>commit <span class="h">${j.hash}</span></span><span class="br">${j.br}</span></div>
+    <div class="job-head"><div><h3>${j.title}</h3><div class="co">${j.co}</div></div><span class="date">${j.date}</span></div>
+    <div class="collapsible" ${long?'data-collapsed="1" style="max-height:440px"':''}>${body}</div>
+    ${long?'<button class="more">Show more ↓</button>':''}
+    <div class="tags">${j.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+  </article>`;}).join(''));
+
+$('#projGrid').innerHTML=PROJECTS.map(([t,d,tags],i)=>`
+  <div class="proj reveal" style="transition-delay:${(i%3)*.08}s">
+    <span class="num">0${i+1} /</span><h3>${t}</h3><p>${d}</p>
+    <div class="tags">${tags.map(x=>`<span>${x}</span>`).join('')}</div>
+  </div>`).join('');
+
+$('#certGrid').innerHTML=CERTS.map(([n,by,url,ab])=>`
+  <${url?`a href="${url}" target="_blank" rel="noopener"`:'div'} class="cert reveal">
+    <div class="seal">${ab}</div>
+    <div><h4>${n}</h4><small>${by}</small>${url?'<div class="verify">Verify credential ↗</div>':''}</div>
+  </${url?'a':'div'}>`).join('');
+
+$('#eduGrid').innerHTML=EDU.map(([n,w,d])=>`
+  <div class="edu-card reveal"><div class="seal">🎓</div>
+    <div><h3>${n}</h3><div class="where">📍 ${w}</div>${d?`<p>${d}</p>`:''}</div></div>`).join('');
+$('#yr').textContent=new Date().getFullYear();
+
+/* ================= HERO: typed ================= */
+const words=['spark.read.format("delta")','fabric pipeline run --env prod','databricks jobs run-now','MERGE INTO gold.fact_sales','git push origin main'];
+let wi=0,ci=0,del=false;
+(function type(){
+  const w=words[wi],el=$('#typed');
+  el.textContent=w.slice(0,ci+=del?-1:1);
+  if(!del&&ci===w.length){del=true;return setTimeout(type,1500);}
+  if(del&&ci===0){del=false;wi=(wi+1)%words.length;}
+  setTimeout(type,del?28:60);
+})();
+
+/* ================= HERO: pipeline run ================= */
+const PLATFORMS={
+  fabric:{tag:'Fabric Data Pipeline',name:'pl_medallion_daily',color:'var(--fabric)',acts:[
+    ['Ingest sources','Copy Data · Logic App'],['Bronze → Silver','Notebook · PySpark'],
+    ['Data quality checks','Notebook · DQ rules'],['Silver → Gold','Delta MERGE'],['Refresh semantic model','Direct Lake · Power BI']]},
+  dbx:{tag:'Databricks Workflow',name:'job_lakehouse_etl',color:'var(--dbx)',acts:[
+    ['Auto Loader ingest','cloudFiles · Bronze'],['Cleanse & conform','PySpark task'],
+    ['Data quality checks','DQ framework'],['Build gold marts','Delta MERGE'],['Publish to SQL warehouse','Databricks SQL']]},
+};
+const runEl=$('#run'),actsEl=$('#acts'),logEl=$('#runLog');
+function log(el,html,max=6){const d=document.createElement('div');d.innerHTML=html;el.appendChild(d);while(el.children.length>max)el.firstChild.remove();}
+let runNo=1042;
+async function heroLoop(){
+  let key='fabric';
+  while(true){
+    const P=PLATFORMS[key];
+    runEl.style.setProperty('--plat',P.color);
+    $('#platTag').textContent=P.tag; $('#runName').textContent=P.name;
+    $('#runId').textContent=`run #${runNo++} · trigger: schedule`;
+    $('#runStatus').textContent='● running'; $('#runStatus').className='';
+    actsEl.innerHTML=P.acts.map(([n,t])=>`<div class="act"><span class="st"></span><div><div class="act-name">${n}</div><div class="act-type">${t}</div><div class="bar"><b></b></div></div><span class="dur">queued</span></div>`).join('');
+    logEl.innerHTML=''; log(logEl,`<span class="k">▶</span> starting <span class="pf">${P.name}</span>`);
+    let rows=0; const rowsEl=$('#rows');
+    const rowsTimer=setInterval(()=>{rows+=Math.floor(Math.random()*42000+18000);rowsEl.textContent=rows.toLocaleString();},120);
+    const acts=[...actsEl.children];
+    const logs=[
+      ['spark: reading 148 files from source','ingested 1.2M rows → bronze'],
+      ['spark: stage 2/4 · shuffle 412 MB','wrote silver.customers (Delta)'],
+      ['DQ: 38 rules · nulls · dupes · RI','DQ passed 99.7%'],
+      ['MERGE INTO gold.fact_orders','gold updated · 2 tables'],
+      ['refreshing downstream model','refresh complete'],
+    ];
+    for(let i=0;i<acts.length;i++){
+      const a=acts[i],st=a.querySelector('.st'),bar=a.querySelector('.bar b'),dur=a.querySelector('.dur');
+      const ms=900+Math.random()*900;
+      st.className='st r'; dur.textContent='running';
+      log(logEl,`<span class="k">›</span> ${logs[i][0]}`);
+      bar.style.transitionDuration=ms+'ms'; requestAnimationFrame(()=>bar.style.width='100%');
+      await sleep(ms);
+      st.className='st s'; dur.textContent=(ms/1000*12).toFixed(0)+'s';
+      log(logEl,`<span class="ok">✓</span> ${logs[i][1]}`);
+    }
+    clearInterval(rowsTimer);
+    $('#runStatus').textContent='✓ succeeded'; $('#runStatus').className='ok';
+    log(logEl,`<span class="ok">✓ run succeeded</span> · ${rows.toLocaleString()} rows`);
+    await sleep(2600);
+    key=key==='fabric'?'dbx':'fabric';
+  }
+}
+
+/* ================= ARCHITECTURE ================= */
+const arch=$('#architecture'),pill=$('#pill'),tbtns=$$('#platToggle button');
+let archPlat='fabric',autoSwitch=true;
+function setPlat(p){
+  archPlat=p;
+  arch.style.setProperty('--plat',p==='fabric'?'var(--fabric)':'var(--dbx)');
+  tbtns.forEach(b=>b.classList.toggle('on',b.dataset.p===p));
+  const on=tbtns.find(b=>b.dataset.p===p); pill.style.left=on.offsetLeft+'px'; pill.style.width=on.offsetWidth+'px';
+  $$('#flow .tech').forEach(t=>{t.style.opacity=0;setTimeout(()=>{t.textContent=t.dataset[p];t.style.opacity=1;},200);});
+}
+tbtns.forEach(b=>b.onclick=()=>{autoSwitch=false;$('#autoNote').textContent='● manual';setPlat(b.dataset.p);});
+setPlat('fabric'); addEventListener('resize',()=>setPlat(archPlat));
+setInterval(()=>{if(autoSwitch)setPlat(archPlat==='fabric'?'dbx':'fabric');},7000);
+
+const nodes=$$('#flow .node'),cnts=$$('#flow [data-cnt]'),cntVals=cnts.map(()=>0);
+let ni=0;
+setInterval(()=>{
+  nodes.forEach(n=>n.classList.remove('hit'));
+  nodes[ni%nodes.length].classList.add('hit'); ni++;
+  cnts.forEach((c,i)=>{cntVals[i]+=Math.floor((Math.random()*900+300)*(1-i*.12));c.textContent=cntVals[i].toLocaleString()+' rows';});
+},800);
+
+const sparks=$$('[data-spark]');
+sparks.forEach(s=>s.innerHTML='<i></i>'.repeat(18));
+function tickMetrics(){
+  $('#mThr').textContent=(Math.floor(Math.random()*9000)+41000).toLocaleString()+' rows/s';
+  $('#mFresh').textContent=(Math.random()*3+2).toFixed(1)+' min';
+  $('#mDq').textContent=(99.4+Math.random()*.55).toFixed(2)+'%';
+  const tot=24,ok=tot-(Math.random()<.15?1:0); $('#mHealth').textContent=ok+' / '+tot;
+  sparks.forEach(s=>[...s.children].forEach(b=>b.style.height=(25+Math.random()*75)+'%'));
+}
+tickMetrics(); setInterval(tickMetrics,1600);
+
+/* ================= CI/CD ================= */
+const STAGES=[['⌥','Commit','push'],['⚙','Build','validate'],['✓','Test','unit + DQ'],['D','Deploy Dev','DEV'],['T','Deploy Test','TEST'],['P','Deploy Prod','PROD']];
+$('#stages').innerHTML=STAGES.map(([ic,n,s],i)=>(i?'<div class="sbar"><b></b></div>':'')+
+  `<div class="stage"><div class="circ">${ic}</div><div><span>${n}</span><small>${s}</small></div></div>`).join('');
+const stEls=$$('#stages .stage'),sbars=$$('#stages .sbar');
+const COMMITS=[
+  ['feature/fabric-migration','feat: migrate gold pipelines from Synapse to Fabric'],
+  ['feature/dq-framework','feat: add referential-integrity checks to DQ framework'],
+  ['fix/capacity-alerts','fix: tune capacity right-sizing thresholds'],
+  ['feature/sharepoint-ingest','feat: event-driven SharePoint → Lakehouse ingestion'],
+];
+const cdLog=$('#cdLog'),hex=()=>Math.random().toString(16).slice(2,9);
+async function cicdLoop(){
+  let k=0;
+  while(true){
+    const [br,msg]=COMMITS[k++%COMMITS.length],h=hex();
+    $('#cdBranch').textContent=br; $('#cdMsg').textContent=msg; $('#cdHash').textContent=h;
+    $('#cdStatus').className='dstatus run'; $('#cdStatus').textContent='● running';
+    stEls.forEach((s,i)=>{s.className='stage';s.querySelector('small').textContent=STAGES[i][2];});
+    sbars.forEach(b=>{b.classList.remove('done');b.firstChild.style.width='0';});
+    ['eDev','eTest','eProd'].forEach(id=>$('#'+id).classList.remove('on'));
+    const gb=$('#gBranch'); gb.style.transition='none'; gb.style.strokeDashoffset=300;
+    ['gc1','gc2','gMerge'].forEach(id=>$('#'+id).setAttribute('opacity',0));
+    cdLog.innerHTML='';
+    log(cdLog,`<span class="c">$</span> git push origin ${br}`,9);
+    await sleep(300);
+    gb.style.transition='stroke-dashoffset 6s ease'; gb.style.strokeDashoffset=0;
+    const steps=[
+      ['commit '+h+' pushed','<span class="ok">✓</span> Fabric Git sync: workspace up to date'],
+      ['validating notebooks & pipeline JSON','<span class="ok">✓</span> build artifact published'],
+      ['pytest · 46 tests · DQ rules','<span class="ok">✓</span> 46 passed in 8.2s'],
+      ['deployment pipeline → DEV','<span class="ok">✓</span> deployed to DEV'],
+      ['deployment pipeline → TEST','<span class="ok">✓</span> deployed to TEST · smoke tests ok'],
+      ['deployment pipeline → PROD','<span class="ok">✓</span> deployed to PROD'],
+    ];
+    for(let i=0;i<stEls.length;i++){
+      const s=stEls[i];
+      if(i){sbars[i-1].firstChild.style.width='100%';sbars[i-1].classList.add('done');}
+      s.className='stage r'; s.querySelector('small').textContent='running';
+      log(cdLog,`<span class="k">›</span> ${steps[i][0]}`,9);
+      if(i===1)$('#gc1').setAttribute('opacity',1);
+      if(i===3)$('#gc2').setAttribute('opacity',1);
+      if(i===5){s.className='stage w';s.querySelector('small').textContent='approval';log(cdLog,`<span class="w">⏸</span> approval requested · release manager`,9);await sleep(1100);log(cdLog,`<span class="ok">✓</span> approved`,9);s.className='stage r';s.querySelector('small').textContent='running';}
+      await sleep(900);
+      s.className='stage s'; s.querySelector('small').textContent='✓ done';
+      log(cdLog,steps[i][1],9);
+      if(i===3)$('#eDev').classList.add('on');
+      if(i===4)$('#eTest').classList.add('on');
+      if(i===5){$('#eProd').classList.add('on');$('#gMerge').setAttribute('opacity',1);}
+    }
+    $('#cdStatus').className='dstatus ok'; $('#cdStatus').textContent='✓ deployed';
+    await sleep(3000);
+  }
+}
+
+function startWhenVisible(el,fn){
+  const o=new IntersectionObserver(es=>{if(es[0].isIntersecting){o.disconnect();fn();}},{threshold:.2}); o.observe(el);
+}
+startWhenVisible($('#run'),heroLoop);
+startWhenVisible($('#cicd .cicd'),cicdLoop);
+
+/* ================= GENERIC UI ================= */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
+$$('.reveal').forEach(el=>io.observe(el));
+
+const co=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return; co.unobserve(e.target);
+  const el=e.target,end=+el.dataset.count,suf=el.dataset.suffix||''; let s=null;
+  const step=t=>{s??=t;const p=Math.min((t-s)/1400,1);el.textContent=Math.round(end*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(step);};
+  requestAnimationFrame(step);
+}),{threshold:.6});
+$$('[data-count]').forEach(el=>co.observe(el));
+
+const nav=$('#nav'),prog=$('#progress'),tl=$('#timeline'),fill=$('#tlFill');
+const secs=$$('section'),links=$$('.links a');
+function onScroll(){
+  const h=document.documentElement,y=h.scrollTop;
+  prog.style.width=(y/(h.scrollHeight-h.clientHeight))*100+'%';
+  nav.classList.toggle('scrolled',y>20);
+  const r=tl.getBoundingClientRect();
+  fill.style.height=Math.max(0,Math.min(r.height-12,innerHeight*.6-r.top))+'px';
+  let cur=''; secs.forEach(s=>{if(s.getBoundingClientRect().top<innerHeight*.4)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+$$('.skill-card').forEach(c=>c.addEventListener('mousemove',e=>{
+  const r=c.getBoundingClientRect(); c.style.setProperty('--mx',e.clientX-r.left+'px'); c.style.setProperty('--my',e.clientY-r.top+'px');
+}));
+$$('.proj').forEach(c=>{
+  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    c.style.transform=`perspective(800px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-4px)`;});
+  c.addEventListener('mouseleave',()=>c.style.transform='');
+});
+
+$$('.more').forEach(b=>b.addEventListener('click',()=>{
+  const c=b.previousElementSibling,open=c.dataset.collapsed==='1';
+  c.style.maxHeight=open?c.scrollHeight+'px':'440px'; c.dataset.collapsed=open?'0':'1';
+  b.textContent=open?'Show less ↑':'Show more ↓';
+}));
+
+$('#menuBtn').onclick=()=>$('#links').classList.toggle('open');
+links.forEach(a=>a.addEventListener('click',()=>$('#links').classList.remove('open')));
+
+const root=document.documentElement,tb=$('#themeBtn');
+function setTheme(t){root.dataset.theme=t;tb.textContent=t==='light'?'☾':'☀';try{localStorage.setItem('theme',t)}catch(e){}}
+let saved;try{saved=localStorage.getItem('theme')}catch(e){}
+setTheme(saved||'dark');
+tb.onclick=()=>setTheme(root.dataset.theme==='light'?'dark':'light');
+
+$('#copyBtn').onclick=async()=>{try{await navigator.clipboard.writeText('vikasrai.dataengineer@gmail.com');}catch(e){}
+  const t=$('#toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800);};
+
+/* ================= HERO BACKGROUND: data streams ================= */
+const cv=$('#stream'),ctx=cv.getContext('2d'); let parts=[],lanes=[];
+function size(){
+  const dpr=devicePixelRatio||1; cv.width=cv.offsetWidth*dpr; cv.height=cv.offsetHeight*dpr;
+  const n=Math.max(8,Math.floor(cv.offsetHeight/46)); lanes=Array.from({length:n},(_,i)=>(i+.5)*cv.height/n);
+  parts=Array.from({length:Math.min(60,Math.floor(cv.offsetWidth/22))},()=>spawn(true));
+}
+function spawn(rand){const dpr=devicePixelRatio||1;
+  return {x:rand?Math.random()*cv.width:-40*dpr,y:lanes[Math.floor(Math.random()*lanes.length)],v:(1+Math.random()*2.4)*dpr,len:(20+Math.random()*60)*dpr,c:Math.random()<.5?'--fabric':(Math.random()<.5?'--dbx':'--accent2'),s:Math.random()<.3};}
+function draw(){
+  const cs=getComputedStyle(root),dpr=devicePixelRatio||1;
+  ctx.clearRect(0,0,cv.width,cv.height);
+  ctx.strokeStyle=cs.getPropertyValue('--line').trim(); ctx.globalAlpha=.35; ctx.lineWidth=dpr;
+  ctx.setLineDash([4*dpr,10*dpr]);
+  lanes.forEach(y=>{ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(cv.width,y);ctx.stroke();});
+  ctx.setLineDash([]);
+  parts.forEach((p,i)=>{
+    p.x+=p.v; if(p.x-p.len>cv.width)parts[i]=spawn(false);
+    const col=cs.getPropertyValue(p.c).trim(),g=ctx.createLinearGradient(p.x-p.len,0,p.x,0);
+    g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,col);
+    ctx.globalAlpha=.8; ctx.strokeStyle=g; ctx.lineWidth=2*dpr; ctx.beginPath(); ctx.moveTo(p.x-p.len,p.y); ctx.lineTo(p.x,p.y); ctx.stroke();
+    ctx.fillStyle=col; ctx.globalAlpha=1;
+    if(p.s)ctx.fillRect(p.x-3*dpr,p.y-3*dpr,6*dpr,6*dpr); else {ctx.beginPath();ctx.arc(p.x,p.y,2.4*dpr,0,7);ctx.fill();}
+  });
+  ctx.globalAlpha=1; requestAnimationFrame(draw);
+}
+addEventListener('resize',size); size();
+if(!REDUCED)draw();
+</script>
+</body>
+</html>
